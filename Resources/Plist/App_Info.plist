@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key></key>
+	<string></string>
 	<key>BGTaskSchedulerPermittedIdentifiers</key>
 	<array>
 		<string>namnguyen.com.focusforest.refresh</string>
@@ -9,7 +11,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>AOD</string>
+	<string>Grammar AI</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,12 +24,25 @@
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
 	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>tinyleo.com.grammarai</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>animeaiart</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>FirebaseScreenReportingEnabled</key>
 	<false/>
 	<key>GADApplicationIdentifier</key>
-	<string></string>
+	<string>ca-app-pub-4867765339642009~2314922163</string>
 	<key>GADIsAdManagerApp</key>
 	<string>YES</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -81,8 +96,16 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>We need access to the camera to recognize text.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We need to access to your microphone to record audio and convert it into text input.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Please allow access to save photo in your photo library</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Please allow permission for speech recognition. This will enable the app to record your speech and convert it into text input.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This identifier will be used to deliver personalized ads to you.</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -288,10 +311,11 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Roboto-Bold.ttf</string>
-		<string>Roboto-Light.ttf</string>
-		<string>Roboto-Medium.ttf</string>
-		<string>Roboto-Regular.ttf</string>
+		<string>SF-Pro-Text-Bold.ttf</string>
+		<string>SF-Pro-Text-Medium.ttf</string>
+		<string>SF-Pro-Text-Regular.ttf</string>
+		<string>SF-Pro-Text-Semibold.ttf</string>
+		<string>SF-Pro-Text-Heavy.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>
@@ -307,7 +331,7 @@
 		<string>armv7</string>
 	</array>
 	<key>UIStatusBarStyle</key>
-	<string>UIStatusBarStyleDefault</string>
+	<string>UIStatusBarStyleDarkContent</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -322,6 +346,8 @@
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
+	<false/>
+	<key>VoiceSupportedCharacters</key>
+	<string></string>
 </dict>
 </plist>

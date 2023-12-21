@@ -2,22 +2,18 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CLIENT_ID</key>
-	<string>917709491932-tt8h5vjhahsrej5rlrfavm0gsem04280.apps.googleusercontent.com</string>
-	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.917709491932-tt8h5vjhahsrej5rlrfavm0gsem04280</string>
 	<key>API_KEY</key>
-	<string>AIzaSyC7s5fb6tkDDHdiiqkgbeElIFcm_WkzXhw</string>
+	<string>AIzaSyBC_MsHYgG_G8h4dpsWn2aFH_GwzGulyVE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>917709491932</string>
+	<string>388807946098</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>tinyleo.com.timelesstalk</string>
+	<string>tinyleo.com.grammarai</string>
 	<key>PROJECT_ID</key>
-	<string>timelesstalk-9a33d</string>
+	<string>grammarai-67eab</string>
 	<key>STORAGE_BUCKET</key>
-	<string>timelesstalk-9a33d.appspot.com</string>
+	<string>grammarai-67eab.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:917709491932:ios:3bd7304e076ad9ba98ee19</string>
+	<string>1:388807946098:ios:79a076d034c631e15077eb</string>
 </dict>
 </plist>

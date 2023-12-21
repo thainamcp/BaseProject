@@ -30,9 +30,6 @@
                             <constraint firstAttribute="bottom" secondItem="cFW-79-tJt" secondAttribute="bottom" id="kFI-8t-N3E"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="pannelLaunch" destination="cFW-79-tJt" id="evY-2Q-Hre"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
