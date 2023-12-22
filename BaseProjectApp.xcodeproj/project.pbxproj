@@ -20,6 +20,11 @@
 		24BA309E2ADFE09100C778D7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BA309D2ADFE09100C778D7 /* AdSupport.framework */; };
 		24ECFB8B290294DA008F7DA5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ECFB8A290294DA008F7DA5 /* R.generated.swift */; };
 		BE2C22E222A8F134003526A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2C22DF22A8F134003526A6 /* AppDelegate.swift */; };
+		C33067F62B354D4C0005F6FD /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33067F52B354D4C0005F6FD /* NewViewController.swift */; };
+		C33067FD2B355B340005F6FD /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33067FC2B355B340005F6FD /* CategoryCell.swift */; };
+		C33067FF2B358B6E0005F6FD /* cloudy.png in Resources */ = {isa = PBXBuildFile; fileRef = C33067FE2B358B6E0005F6FD /* cloudy.png */; };
+		C33068012B35938A0005F6FD /* WeatherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33068002B35938A0005F6FD /* WeatherViewCell.swift */; };
+		C33068032B35977B0005F6FD /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33068022B35977B0005F6FD /* Weather.swift */; };
 		D85B2D6E2451CA6C00300F57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85B2D6C2451CA6C00300F57 /* LaunchScreen.storyboard */; };
 		D8729C8F2431A2250045F4FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE2C22B222A8EE6C003526A6 /* Assets.xcassets */; };
 		D88E8CB825812207009864A9 /* Plist in Resources */ = {isa = PBXBuildFile; fileRef = D88E8CB725812207009864A9 /* Plist */; };
@@ -73,6 +78,11 @@
 		BE2C22CA22A8EEC4003526A6 /* project-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "project-debug.xcconfig"; sourceTree = "<group>"; };
 		BE2C22CB22A8EEC4003526A6 /* app-iOS-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "app-iOS-debug.xcconfig"; sourceTree = "<group>"; };
 		BE2C22DF22A8F134003526A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C33067F52B354D4C0005F6FD /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		C33067FC2B355B340005F6FD /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		C33067FE2B358B6E0005F6FD /* cloudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloudy.png; path = ../../../../Downloads/cloudy.png; sourceTree = "<group>"; };
+		C33068002B35938A0005F6FD /* WeatherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewCell.swift; sourceTree = "<group>"; };
+		C33068022B35977B0005F6FD /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CAA6B170F25CDAD6DF522015 /* Pods-AIEnglishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIEnglishApp.debug.xcconfig"; path = "Target Support Files/Pods-AIEnglishApp/Pods-AIEnglishApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D8158C5126106F17005CD0EB /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8158C5226106F17005CD0EB /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +170,7 @@
 			children = (
 				249DF8BD2AFB8E39008E6F48 /* GoogleService-Info.plist */,
 				BE2C22B222A8EE6C003526A6 /* Assets.xcassets */,
+				C33067FE2B358B6E0005F6FD /* cloudy.png */,
 				D8158CFB2610CA60005CD0EB /* Configuration.storekit */,
 				D87C09242536119800F8A92D /* Fonts */,
 				5A3F6EB928DF66BB0066A8A5 /* BaseProjectApp.entitlements */,
@@ -245,6 +256,10 @@
 			isa = PBXGroup;
 			children = (
 				247DA2332B348C2800487563 /* MainViewController.swift */,
+				C33067F52B354D4C0005F6FD /* NewViewController.swift */,
+				C33067FC2B355B340005F6FD /* CategoryCell.swift */,
+				C33068002B35938A0005F6FD /* WeatherViewCell.swift */,
+				C33068022B35977B0005F6FD /* Weather.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -313,7 +328,7 @@
 				TargetAttributes = {
 					BE2C227022A8E93D003526A6 = {
 						CreatedOnToolsVersion = 10.2;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1510;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -352,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D88E8CB825812207009864A9 /* Plist in Resources */,
+				C33067FF2B358B6E0005F6FD /* cloudy.png in Resources */,
 				24031DE82B04718200E2FE53 /* SF-Pro-Text-Heavy.ttf in Resources */,
 				249DF8C62AFB8E45008E6F48 /* SF-Pro-Text-Bold.ttf in Resources */,
 				D85B2D6E2451CA6C00300F57 /* LaunchScreen.storyboard in Resources */,
@@ -455,6 +471,10 @@
 				BE2C22E222A8F134003526A6 /* AppDelegate.swift in Sources */,
 				247DA2342B348C2800487563 /* MainViewController.swift in Sources */,
 				24ECFB8B290294DA008F7DA5 /* R.generated.swift in Sources */,
+				C33068012B35938A0005F6FD /* WeatherViewCell.swift in Sources */,
+				C33067F62B354D4C0005F6FD /* NewViewController.swift in Sources */,
+				C33067FD2B355B340005F6FD /* CategoryCell.swift in Sources */,
+				C33068032B35977B0005F6FD /* Weather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,8 +523,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE2C22CB22A8EEC4003526A6 /* app-iOS-debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\" \"AppIcon 2\" \"AppIcon 3\" \"AppIcon 5\" \"AppIcon 7\" \"AppIcon 6\" \"AppIcon 4\" \"AppIcon 8\"";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 5";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\"";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/Resources/$(TARGET_NAME).entitlements";
@@ -530,6 +550,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tinyleo.com.grammarai;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = BaseProjectApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -550,8 +571,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE2C22C722A8EEC4003526A6 /* app-iOS-release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\" \"AppIcon 2\" \"AppIcon 3\" \"AppIcon 5\" \"AppIcon 7\" \"AppIcon 6\" \"AppIcon 4\" \"AppIcon 8\"";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 5";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\"";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/Resources/$(TARGET_NAME).entitlements";
@@ -578,6 +599,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = tinyleo.com.grammarai;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = BaseProjectApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -585,6 +607,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_OPTIMIZE_OBJECT_LIFETIME = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
