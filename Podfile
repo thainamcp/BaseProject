@@ -10,6 +10,7 @@ def common_pods
   pod 'Firebase'
   pod 'Firebase/RemoteConfig'
   pod 'Alamofire'
+  # update pod
 end
 
 target 'BaseProjectApp' do
