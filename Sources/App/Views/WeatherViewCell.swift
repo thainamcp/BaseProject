@@ -25,21 +25,21 @@ class WeatherViewCell: UICollectionViewCell {
         setUpView()
         setUpConstraints()
     }
-    func setData(day: String , nameImage: String , temperature: String){
-        dayLabel.text = day
-        weatherImage.image = UIImage(named: nameImage)
-        temperatureLabel.text = temperature
+    func setData(weatherData : WeatherData){
+        dayLabel.text = weatherData.getTime()
+        weatherImage.image = UIImage(named: weatherData.weather[0].icon)
+        temperatureLabel.text = weatherData.getTemperatureC()
         
     }
     
     func setUpView(){
-        dayLabel.textColor = .white
+        dayLabel.textColor = .black
         dayLabel.textAlignment = .center
         dayLabel.font = UIFont.systemFont(ofSize: 16)
         
         weatherImage.contentMode = .scaleToFill
         
-        temperatureLabel.textColor = .white
+        temperatureLabel.textColor = .black
         temperatureLabel.textAlignment = .center
         temperatureLabel.font = UIFont.systemFont(ofSize: 16)
         
@@ -53,19 +53,19 @@ class WeatherViewCell: UICollectionViewCell {
         
         dayLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().offset(10)
+            $0.topMargin.equalToSuperview().offset(5)
             $0.size.equalTo(CGSize(width: 100, height: 30))
             
         }
         weatherImage.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(dayLabel.snp.bottom).offset(30)
+            $0.top.equalTo(dayLabel.snp.bottom).offset(5)
             $0.size.equalTo(CGSize(width: 50, height: 50))
             
         }
         temperatureLabel.snp.makeConstraints{
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(weatherImage.snp.bottom).offset(30)
+            $0.top.equalTo(weatherImage.snp.bottom).offset(5)
             $0.size.equalTo(CGSize(width: 100, height: 30))
             
         }

@@ -8,48 +8,57 @@
 
 import UIKit
 import SnapKit
-
-class NewViewController: UIViewController{
-    private lazy var backButton = UIButton()
-    private lazy var nameLabel = UILabel()
-    var nameFood : String?
-    override func viewDidLoad(){
+import CoreLocation
+class NewViewController: UIViewController , Demo{
+    
+    private lazy var nextButton = UIButton()
+    private lazy var titleLabel = UILabel()
+    
+    override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .orange
-        setUpViews()
-        setUpConstraints()
-        
-    }
-    func setUpViews() {
-        nameLabel.text = nameFood
-        nameLabel.textColor = .black
-        nameLabel.font = UIFont.systemFont(ofSize: 18)
-        
-        
-        backButton.setTitle("Next view", for: .normal)
-        backButton.setTitleColor(.white, for: .normal)
-        backButton.backgroundColor = .blue
-        backButton.addTarget(self, action: #selector(backView), for: .touchUpInside)
-    }
-    func setUpConstraints(){
-        view.addSubview(backButton)
-        view.addSubview(nameLabel)
-        
-        nameLabel.snp.makeConstraints{
-            $0.leftMargin.equalToSuperview().offset(20)
-            $0.topMargin.equalToSuperview().offset(50)
-            $0.size.equalTo(CGSize(width: 200, height: 30))
-        }
-        
-        backButton.snp.makeConstraints{
-            $0.center.equalToSuperview()
-            $0.size.equalTo(CGSize(width: 200, height: 50))
-            
-        }
-        
-    }
-    @objc func backView(){
-        navigationController?.popViewController(animated: true)
+        view.backgroundColor = .white
+       
+    
+        setViews()
+
+        // Do any additional setup after loading the view.
     }
     
+    func setViews(){
+        view.addSubview(nextButton)
+        view.addSubview(titleLabel)
+        
+        titleLabel.text = "kết quả"
+        titleLabel.textColor = .black
+        titleLabel.font = UIFont.systemFont(ofSize: 32)
+        
+        nextButton.setTitle("next", for: .normal)
+        nextButton.setTitleColor(.white, for: .normal)
+        nextButton.backgroundColor = .blue
+        nextButton.addTarget(self, action: #selector(handlenextButton), for: .touchUpInside)
+        
+        titleLabel.snp.makeConstraints{
+            $0.center.equalToSuperview()
+            $0.size.equalTo(CGSize(width: 200, height: 40))
+        }
+        nextButton.snp.makeConstraints{
+            $0.centerX.equalToSuperview()
+            $0.top.top.equalTo(titleLabel.snp.bottom).offset(20)
+            $0.size.equalTo(CGSize(width: 200, height: 40))
+        }
+    }
+
+    
+    @objc func handlenextButton(){
+        let view2 = View2Controller()
+        view2.demo = self
+        navigationController?.pushViewController(view2, animated: true)
+    }
+    
+    func demoDelegate(value: String) {
+        titleLabel.text = value
+        print("Vào")
+    }
+
+  
 }

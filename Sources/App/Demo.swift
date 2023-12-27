@@ -7,3 +7,6 @@
 //
 
 import Foundation
+protocol Demo {
+    func demoDelegate(value: String)
+}

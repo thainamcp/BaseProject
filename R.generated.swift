@@ -41,7 +41,7 @@ struct _R {
     let developmentRegion = "en"
   }
 
-  /// This `_R.image` struct is generated, and contains static references to 31 images.
+  /// This `_R.image` struct is generated, and contains static references to 36 images.
   struct image {
     let bundle: Foundation.Bundle
 
@@ -77,6 +77,18 @@ struct _R {
 
     /// Image `button_copy_text`.
     var button_copy_text: RswiftResources.ImageResource { .init(name: "button_copy_text", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `cloudy`.
+    var cloudy: RswiftResources.ImageResource { .init(name: "cloudy", path: [], bundle: bundle, locale: LocaleReference.none, onDemandResourceTags: nil) }
+
+    /// Image `icon-heart`.
+    var iconHeart: RswiftResources.ImageResource { .init(name: "icon-heart", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icon-red-heart`.
+    var iconRedHeart: RswiftResources.ImageResource { .init(name: "icon-red-heart", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icon-refresh 1`.
+    var iconRefresh1: RswiftResources.ImageResource { .init(name: "icon-refresh 1", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
 
     /// Image `icon_antonym`.
     var icon_antonym: RswiftResources.ImageResource { .init(name: "icon_antonym", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
@@ -137,6 +149,9 @@ struct _R {
 
     /// Image `icon_highlight_ds`.
     var icon_highlight_ds: RswiftResources.ImageResource { .init(name: "icon_highlight_ds", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
+
+    /// Image `icon_left`.
+    var icon_left: RswiftResources.ImageResource { .init(name: "icon_left", path: [], bundle: bundle, locale: nil, onDemandResourceTags: nil) }
   }
 
   /// This `_R.entitlements` struct is generated, and contains static references to 0 properties.
@@ -174,7 +189,7 @@ struct _R {
     }
   }
 
-  /// This `_R.file` struct is generated, and contains static references to 7 resource files.
+  /// This `_R.file` struct is generated, and contains static references to 9 resource files.
   struct file {
     let bundle: Foundation.Bundle
 
@@ -198,6 +213,12 @@ struct _R {
 
     /// Resource file `SF-Pro-Text-Semibold.ttf`.
     var sfProTextSemiboldTtf: RswiftResources.FileResource { .init(name: "SF-Pro-Text-Semibold", pathExtension: "ttf", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `cloudy.png`.
+    var cloudyPng: RswiftResources.FileResource { .init(name: "cloudy", pathExtension: "png", bundle: bundle, locale: LocaleReference.none) }
+
+    /// Resource file `icon-refresh.png`.
+    var iconRefreshPng: RswiftResources.FileResource { .init(name: "icon-refresh", pathExtension: "png", bundle: bundle, locale: LocaleReference.none) }
   }
 
   /// This `_R.storyboard` struct is generated, and contains static references to 1 storyboards.
