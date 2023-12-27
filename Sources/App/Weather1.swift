@@ -7,7 +7,7 @@
 //
 
 import Foundation
-struct Weather {
+struct Weather1 {
      var dayOnWeather: String
      var imageWeather: String
      var temperature: String
