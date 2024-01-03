@@ -30,6 +30,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         // update
+        //
        
         
         // MARK: Prevent app's screen lock
