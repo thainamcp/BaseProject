@@ -21,6 +21,14 @@ class MainViewController: UIViewController, DelegateCountry{
       private var isC = true
       private var weatherData: WeatherData?
       private lazy var weatherDayTableView = UITableView()
+    
+    // Review code:
+    // - Xoá khoảng trắng dư thừa
+    // - Giữa các func cách 1 khoảng trắng
+    // - Chú ý đặt tên ViewController với Model: vd: CarModel, PeopleModel, MainViewController
+    // - Vài chỗ UD sử dụng nhiều trong 1 class hoặc func, nên khai báo 1 biến để sử dụng lại, không khởi tạo 2 lần trong func
+    // - Remove những class/stuct không sài.
+    // - Viewmodel chưa thấy handle, tạo từng viewmodel từng ứng với viewcontroller, đẩy logo handle qua viewmodel, viewcontroller chỉ handle ui.
       
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,7 +124,8 @@ class MainViewController: UIViewController, DelegateCountry{
         setWeatherCollectionView()
         setWeatherDateTableView()
         
-      
+        
+        // Review code: Xoa khoang trang du thua
     }
     
     func setUpConstraints() {
@@ -208,7 +217,7 @@ class MainViewController: UIViewController, DelegateCountry{
             $0.size.equalTo(CGSize(width: view.frame.width - 40,height: 60))
         }
      
-    }
+    }// Review code: cách dòng với các func khác nhau
     func getWeatherbyContry(lat: Double, lon: Double) {
         
         latlng[0] = lat

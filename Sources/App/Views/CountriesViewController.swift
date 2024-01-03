@@ -184,6 +184,8 @@ extension ContriesViewController: UITableViewDelegate, UITableViewDataSource{
         let row = sender.tag
         var country: Country = countries[row]
         
+        // Review code: ở đây UD sử dụng nhiều, nên khai báo 1 biến để sử dụng lại, không khởi tạo 2 lần trong func
+        
         if UserDefaults.standard.object(forKey: Configs.countriesUD) != nil {
             let jsonDecoder = JSONDecoder()
             if let storedData = UserDefaults.standard.data(forKey: Configs.countriesUD),

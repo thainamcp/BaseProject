@@ -32,7 +32,7 @@ class WeatherViewCell: UICollectionViewCell {
         temperatureLabel.text = isC ?weatherData.getTemperatureC():weatherData.getTemperatureF()
         
        
-        
+        // Review code: khoảng trắng quá nhiều
     }
     
     func setUpView(){
