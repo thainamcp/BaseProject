@@ -28,6 +28,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         nav.setNavigationBarHidden(true, animated: false)
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
+        
+        // update
        
         
         // MARK: Prevent app's screen lock
