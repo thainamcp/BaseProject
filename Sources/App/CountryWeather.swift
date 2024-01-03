@@ -33,9 +33,11 @@ struct Weather:Codable{
 }
 struct City:Codable{
     var country: String
+    var timezone: Int
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.country = try container.decode(String.self, forKey: .country)
+        self.timezone = try container.decode(Int.self, forKey: .timezone)
     }
     
 }
@@ -44,24 +46,25 @@ struct WeatherData:Codable{
     var dt: Int
     var main: Main
     var weather: [Weather]
-  
+    var dt_txt: String
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.dt = try container.decode(Int.self, forKey: .dt)
         self.main = try container.decode(Main.self, forKey: .main)
         self.weather = try container.decode([Weather].self, forKey: .weather)
-      
+        self.dt_txt = try container.decode(String.self, forKey: .dt_txt)
     }
-    
     func getDate() -> String {
         let timestamp = TimeInterval(self.dt)
         let date = Date(timeIntervalSince1970: timestamp)
-        
+
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
+        dateFormatter.dateFormat = "yyyy-MM-dd" // Include time components
+        let timeZone = TimeZone(identifier: "GMT")
+        dateFormatter.timeZone = timeZone
         let formattedDate = dateFormatter.string(from: date)
-        return formattedDate   
+        return formattedDate
     }
     
     func getTime() -> String {
@@ -69,17 +72,21 @@ struct WeatherData:Codable{
         let date = Date(timeIntervalSince1970: timestamp)
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "h:mm a"
+        dateFormatter.dateFormat = "H:mm a"
+        let timeZone = TimeZone(identifier: "GMT")
+        dateFormatter.timeZone = timeZone
         
         let formattedDate = dateFormatter.string(from: date)
         return formattedDate
     }
+
     func getTemperatureF() -> String {
        
         return ConvertUilt.shared.ConvertTemperatureF(temp: self.main.temp)
         
     }
     func getTemperatureC() -> String {
+     
        
         return ConvertUilt.shared.ConvertTemperatureC(temp: self.main.temp)
         
@@ -99,6 +106,8 @@ struct ContryWeather:Codable{
         self.list = try container.decode([WeatherData].self, forKey: .list)
         self.city = try container.decode(City.self, forKey: .city)
     }
+  
+    
 
  
     

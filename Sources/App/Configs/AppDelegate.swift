@@ -17,11 +17,12 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MARK: Initialize views
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        
-      
-        
-        
-        
+        let jsonDecoder = JSONDecoder()
+        if let storedData = UserDefaults.standard.data(forKey: Configs.countriesUD),
+           var decodedCountry = try? jsonDecoder.decode([Country].self, from: storedData) {
+            print("=====> \(decodedCountry)")
+            
+        }
       
         let nav = UINavigationController(rootViewController: MainViewController())
         nav.setNavigationBarHidden(true, animated: false)

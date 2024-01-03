@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "icon-red-heart.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "icon-search.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

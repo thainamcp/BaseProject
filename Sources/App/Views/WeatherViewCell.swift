@@ -25,10 +25,13 @@ class WeatherViewCell: UICollectionViewCell {
         setUpView()
         setUpConstraints()
     }
-    func setData(weatherData : WeatherData){
+    func setData(weatherData : WeatherData, isC: Bool){
         dayLabel.text = weatherData.getTime()
         weatherImage.image = UIImage(named: weatherData.weather[0].icon)
-        temperatureLabel.text = weatherData.getTemperatureC()
+       
+        temperatureLabel.text = isC ?weatherData.getTemperatureC():weatherData.getTemperatureF()
+        
+       
         
     }
     

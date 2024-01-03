@@ -1,17 +1,20 @@
 //
-//  ContryTableViewCell.swift
+//  CountryLikeTableViewCell.swift
 //  BaseProjectApp
 //
-//  Created by Tin Nguyen on 27/12/2023.
-//  Copyright © 2023 Vulcan Labs. All rights reserved.
+//  Created by Tin Nguyen on 02/01/2024.
+//  Copyright © 2024 Vulcan Labs. All rights reserved.
 //
 
 import UIKit
 
-class ContryTableViewCell: UITableViewCell {
-    static var identifier = "ContryTableViewCell"
+class CountryLikeTableViewCell: UITableViewCell {
+    static var identifier = "CountryLikeTableViewCell"
     public lazy var contryImage = UIImageView()
     public lazy var nameContryLabel = UILabel()
+    public lazy var deleteButton = UIButton()
+    
+    
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -26,9 +29,8 @@ class ContryTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setData(contry : Contry){
-       
-        ConvertUilt.shared.loadImage(from: contry.flags.png ) { [weak self] (result) in
+    func setData(country : Country){
+        ConvertUilt.shared.loadImage(from: country.flags.png ) { [weak self] (result) in
                    // Xử lý kết quả
                    switch result {
                    case .success(let image):
@@ -41,23 +43,29 @@ class ContryTableViewCell: UITableViewCell {
                        print("Error: \(error.localizedDescription)")
                    }
                }
-        nameContryLabel.text = contry.name.common
+        nameContryLabel.text = country.name.common
         
+       
     }
     
     func setUpViews(){
-        
+       
         contryImage.contentMode = .scaleAspectFit
         contryImage.layer.cornerRadius = 10
         
         nameContryLabel.textColor = .black
         nameContryLabel.font = UIFont.systemFont(ofSize: 16)
         
+        deleteButton.setImage(UIImage(named: "icon-circle-close"), for: .normal)
+        
+       
+        
     }
     
     func setUpConstraints(){
         self.contentView.addSubview(contryImage)
         self.contentView.addSubview(nameContryLabel)
+        self.contentView.addSubview(deleteButton)
         
         contryImage.snp.makeConstraints{
             $0.centerY.equalToSuperview()
@@ -70,6 +78,11 @@ class ContryTableViewCell: UITableViewCell {
             $0.centerY.equalToSuperview()
             $0.leading.equalTo(contryImage.snp.trailing).offset(20)
             $0.size.equalTo(CGSize(width: 200, height: 40))
+        }
+        deleteButton.snp.makeConstraints{
+            $0.centerY.equalToSuperview()
+            $0.rightMargin.equalToSuperview()
+            $0.size.equalTo(CGSize(width: 25, height: 25))
         }
         
         

@@ -2,39 +2,56 @@ import UIKit
 import SnapKit
 import CoreLocation
 
-class MainViewController: UIViewController{
-    
-      let locationManager = CLLocationManager()
+
+class MainViewController: UIViewController, DelegateCountry{
+      var locationManager = CLLocationManager()
       private lazy var titleLabel = UILabel()
       private lazy var changeFLabel = UILabel()
       private lazy var changeCLabel = UILabel()
       private lazy var itemMainView = UIView()
       private lazy var itemImage = UIImageView()
+      private lazy var activityIndicator = UIActivityIndicatorView()
       private lazy var itemTextLabel = UILabel()
       private lazy var weathersColletionView = UICollectionView()
       private lazy var changeContryButton = UIButton()
       private lazy var iconLikeImage = UIImageView()
-      private lazy var iconRefreshImage = UIImageView()
+      private lazy var iconRefreshButton = UIButton()
       private lazy var daysWeather:[DayWeather] = []
-      private  var weatherData: WeatherData? ;
+      private var latlng:[Double] = [0,0]
+      private var isC = true
+      private var weatherData: WeatherData?
       private lazy var weatherDayTableView = UITableView()
       
-      
-     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        daysWeather = BaseRequestService.share.requestApiWeather().sorted(by: {$0.weatherData[0].dt < $1.weatherData[0].dt});
-        weatherData = daysWeather[0].getWeatherCurrent()
-       
         
         requestLocationAuthorization()
         setUpViews()
         setUpConstraints()
-        UserLocation.shared.setupLocationManager()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+       
+  
+    }
+    
+    func loadData(){
+        self.titleLabel.text = self.daysWeather[0].contry
+        self.itemImage.image = UIImage(named: self.daysWeather[0].getWeatherCurrent()?.weather[0].icon ?? "04d")
+      
+        self.weathersColletionView.reloadData()
+        self.weatherDayTableView.reloadData()
+
+        changeCLabel.textColor = isC ? .red : .white
+        changeFLabel.textColor = isC ? .white : .red
+        self.itemTextLabel.text = isC ? self.daysWeather[0].getWeatherCurrent()?.getTemperatureC():
+        self.daysWeather[0].getWeatherCurrent()?.getTemperatureF()
+      
+        
         
     }
+    
     
     func setGrandientLayer(yourWidth: Int ,yourHeight : Int)-> CAGradientLayer {
         // Tạo một gradient layer
@@ -60,31 +77,36 @@ class MainViewController: UIViewController{
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleClickNextViewLike))
         iconLikeImage.addGestureRecognizer(tapGestureRecognizer)
         
+        activityIndicator.color = .red
+        activityIndicator.style = .large
         
-        iconRefreshImage.image = UIImage(named: "icon-refresh")
-        iconRefreshImage.contentMode = .scaleAspectFit
+        iconRefreshButton.setImage(UIImage(named: "icon-refresh"), for: .normal)
+        iconRefreshButton.imageView?.contentMode = .scaleAspectFill
+        iconRefreshButton.addTarget(self, action: #selector(handleClickRefresh), for: .touchUpInside)
         
-        changeCLabel.text = ""
-        changeCLabel.textColor = .white
+        changeCLabel.text = "°C"
         changeCLabel.font = UIFont.systemFont(ofSize: 24)
-        
+        let changeCTapGR = UITapGestureRecognizer(target: self, action: #selector(handleClickChangeC))
+        changeCLabel.isUserInteractionEnabled = true
+        changeCLabel.addGestureRecognizer(changeCTapGR)
      
-
-        titleLabel.text = daysWeather[0].contry
+        changeFLabel.text = "°F"
+        changeFLabel.font = UIFont.systemFont(ofSize: 24)
+        let changeFTapGR = UITapGestureRecognizer(target: self, action: #selector(handleClickChangeF))
+        changeFLabel.isUserInteractionEnabled = true
+        changeFLabel.addGestureRecognizer(changeFTapGR)
+        
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.systemFont(ofSize: 32)
-        
-        
-        itemImage.image = UIImage(named: weatherData?.weather[0].icon ?? "04d" );
+       
         itemImage.contentMode = .scaleAspectFill
         
-        itemTextLabel.text = weatherData?.getTemperatureC()
         itemTextLabel.textColor = .white
         itemTextLabel.textAlignment = .center
         itemTextLabel.font = UIFont.systemFont(ofSize: 32)
         
-        changeContryButton.setTitle("Change Contry", for: .normal)
+        changeContryButton.setTitle("Change Country", for: .normal)
         changeContryButton.setTitleColor(UIColor.white, for: .normal)
         changeContryButton.backgroundColor = .blue
         changeContryButton.layer.cornerRadius = 10
@@ -106,21 +128,41 @@ class MainViewController: UIViewController{
         view.addSubview(weatherDayTableView)
         view.addSubview(changeContryButton)
         view.addSubview(iconLikeImage)
-        view.addSubview(iconRefreshImage)
+        view.addSubview(iconRefreshButton)
+        view.addSubview(changeCLabel)
+        view.addSubview(changeFLabel)
         
-        iconRefreshImage.snp.makeConstraints{
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.snp.makeConstraints{
+            $0.center.equalToSuperview()
+            $0.width.equalTo(100)
+            $0.height.equalTo(100)
+        }
+        
+        iconRefreshButton.snp.makeConstraints{
             $0.right.equalToSuperview().offset(-20)
             $0.topMargin.equalToSuperview().offset(10)
             $0.size.equalTo(CGSize(width: 25, height: 25))
             
         }
-        iconLikeImage.snp.makeConstraints{
+         iconLikeImage.snp.makeConstraints{
             $0.topMargin.equalToSuperview().offset(10)
             $0.size.equalTo(CGSize(width: 25, height: 25))
-            $0.trailing.equalTo(iconRefreshImage.snp.leading).offset(-15)
+            $0.trailing.equalTo(iconRefreshButton.snp.leading).offset(-15)
     
+         }
+         changeFLabel.snp.makeConstraints{
+           $0.topMargin.equalToSuperview().offset(10)
+           $0.size.equalTo(CGSize(width: 30, height: 25))
+           $0.trailing.equalTo(iconLikeImage.snp.leading).offset(-15)
+   
         }
-    
+        changeCLabel.snp.makeConstraints{
+          $0.topMargin.equalToSuperview().offset(10)
+          $0.size.equalTo(CGSize(width: 30, height: 25))
+          $0.trailing.equalTo(changeFLabel.snp.leading).offset(-15)
+        }
         
         titleLabel.snp.makeConstraints{
             $0.topMargin.equalToSuperview().offset(50)
@@ -154,7 +196,6 @@ class MainViewController: UIViewController{
             $0.size.equalTo(CGSize(width: view.frame.width - 40, height: 160))
         }
         
-        
         weatherDayTableView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(weathersColletionView.snp.bottom).offset(10)
@@ -168,15 +209,49 @@ class MainViewController: UIViewController{
         }
      
     }
+    func getWeatherbyContry(lat: Double, lon: Double) {
+        
+        latlng[0] = lat
+        latlng[1] = lon
+        
+        self.getDataToApiWeather(lat: lat, lon: lon, activityIndicator: activityIndicator)
+    }
+    
+    @objc func handleClickRefresh(){
+        if latlng[0] != 0 && latlng[1] != 0 {
+            self.getDataToApiWeather(lat: latlng[0], lon: latlng[1], activityIndicator: activityIndicator)
+            
+        }else{
+            self.view.setNeedsLayout()
+            self.view.layoutIfNeeded()
+            
+        }
+    }
     
     @objc func handleClickChangeContryButton(){
         let view = ContriesViewController()
+        view.delegateCountry = self
         navigationController?.pushViewController(view, animated: true)
     }
     @objc func handleClickNextViewLike(){
         let view = ContriesLikeViewController()
+        view.delegateCountry = self
         navigationController?.pushViewController(view, animated: true)
     }
+    @objc func handleClickChangeC(){
+        self.isC = true
+        self.loadData()
+    }
+    @objc func handleClickChangeF(){
+        self.isC = false
+        self.loadData()
+    }
+    func showErrorMessageAlert(message: String) {
+           let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
+           let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+           alert.addAction(okAction)
+           present(alert, animated: true, completion: nil)
+       }
 
  
 
@@ -187,7 +262,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return daysWeather[0].weatherData.count
+       
+        if let firstDayWeather = daysWeather.first {
+            return firstDayWeather.weatherData.count
+        } else {
+            return 0
+        }
     }
     
     func setWeatherCollectionView(){
@@ -209,8 +289,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier:"WeatherViewCell", for: indexPath) as? WeatherViewCell else{
             return .init()
         }
-        let weather: WeatherData = daysWeather[0].weatherData[indexPath.row]
-        cell.setData(weatherData: weather)
+        let weather: WeatherData = daysWeather[0].sortWeatherData()[indexPath.row]
+        cell.setData(weatherData: weather,isC: isC)
         
         return cell
         
@@ -239,9 +319,27 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource{
             return .init()
         } 
         let dayWeather = daysWeather[indexPath.row]
-        cell.setData(dayWeather: dayWeather)
+        cell.setData(dayWeather: dayWeather,isC: isC)
         
         return cell
+    }
+    func getDataToApiWeather(lat: Double,lon: Double, activityIndicator: UIActivityIndicatorView){
+        BaseRequestService.share.requestApiWeather(lat: lat, lon: lon,activityIndicator: activityIndicator){
+            (isSuccess,data,code)  in
+            DispatchQueue.main.async {
+                if(isSuccess){
+                    var daysWeatherData = data as? [DayWeather]
+                    self.daysWeather = daysWeatherData!.sorted(by: {$0.weatherData[0].dt < $1.weatherData[0].dt});
+                    self.weatherData = self.daysWeather[0].getWeatherCurrent()
+                    self.loadData()
+                }else{
+                    self.showErrorMessageAlert(message: code ?? "")
+                    
+                }
+                
+                
+            }
+        }
     }
     
     
@@ -252,19 +350,28 @@ extension MainViewController: CLLocationManagerDelegate {
     func requestLocationAuthorization() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
+        locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingHeading()
+        locationManager.startMonitoringSignificantLocationChanges()
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.distanceFilter = 10.0 // Đơn vị là mét
+//        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+     
+
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .authorizedWhenInUse, .authorizedAlways:
+            locationManager.requestLocation()
             locationManager.startUpdatingLocation()
         case .denied, .restricted:
-            // Handle denied or restricted authorization
-            print("error 2")
+             showLocationDeniedAlert()
             break
         case .notDetermined:
             // Authorization not determined yet
-            print("error 2")
+            locationManager.requestWhenInUseAuthorization()
             break
         @unknown default:
             print("error 3")
@@ -274,16 +381,36 @@ extension MainViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
+        latlng[0] = location.coordinate.latitude
+        latlng[1] = location.coordinate.longitude
+     
         
-        // Do something with latitude and longitude
-        print("Latitude: \(latitude), Longitude: \(longitude)")
-
-        print(daysWeather)
+        self.getDataToApiWeather(lat: latlng[0], lon: latlng[1], activityIndicator: activityIndicator)
     }
     
+    func showLocationDeniedAlert() {
+            let alertController = UIAlertController(
+                title: "Location Access Denied",
+                message: "To use this feature, please enable location access in Settings.",
+                preferredStyle: .alert
+            )
+
+            let settingsAction = UIAlertAction(title: "Settings", style: .default) { _ in
+                // Mở cài đặt để người dùng có thể cấp quyền truy cập vị trí
+                if let settingsURL = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(settingsURL)
+                }
+            }
+
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+
+            alertController.addAction(settingsAction)
+            alertController.addAction(cancelAction)
+
+            present(alertController, animated: true, completion: nil)
+        }
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+       
         print("Location error: \(error.localizedDescription)")
     }
 
