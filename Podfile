@@ -9,6 +9,9 @@ def common_pods
   pod 'Firebase/Crashlytics'
   pod 'Firebase'
   pod 'Firebase/RemoteConfig'
+
+  pod 'CoreLocation'
+  pod 'Alamofire'
   pod 'Alamofire'
   # update pod
 end

@@ -20,6 +20,27 @@
 		24BA309E2ADFE09100C778D7 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24BA309D2ADFE09100C778D7 /* AdSupport.framework */; };
 		24ECFB8B290294DA008F7DA5 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24ECFB8A290294DA008F7DA5 /* R.generated.swift */; };
 		BE2C22E222A8F134003526A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2C22DF22A8F134003526A6 /* AppDelegate.swift */; };
+		C33067F62B354D4C0005F6FD /* NewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33067F52B354D4C0005F6FD /* NewViewController.swift */; };
+		C33067FD2B355B340005F6FD /* WeatherDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33067FC2B355B340005F6FD /* WeatherDataTableViewCell.swift */; };
+		C33067FF2B358B6E0005F6FD /* cloudy.png in Resources */ = {isa = PBXBuildFile; fileRef = C33067FE2B358B6E0005F6FD /* cloudy.png */; };
+		C33068012B35938A0005F6FD /* WeatherViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33068002B35938A0005F6FD /* WeatherViewCell.swift */; };
+		C33917462B3C06E8002A32D1 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C33917452B3C06E8002A32D1 /* CountryTableViewCell.swift */; };
+		C39207722B43D7A6009F7AD6 /* CountryLikeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39207712B43D7A6009F7AD6 /* CountryLikeTableViewCell.swift */; };
+		C3B6324E2B39402100095CE2 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B6324D2B39402100095CE2 /* CountriesViewController.swift */; };
+		C3B632522B395C6400095CE2 /* icon-refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = C3B632512B395C6400095CE2 /* icon-refresh.png */; };
+		C3B632542B39637500095CE2 /* CountriesLikeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B632532B39637500095CE2 /* CountriesLikeViewController.swift */; };
+		C3B6325D2B3A868B00095CE2 /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B6325C2B3A868B00095CE2 /* NetworkConstants.swift */; };
+		C3B632612B3A880600095CE2 /* BaseRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B632602B3A880600095CE2 /* BaseRequestService.swift */; };
+		C3B632632B3AB13E00095CE2 /* Demo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B632622B3AB13E00095CE2 /* Demo.swift */; };
+		C3B632652B3AB5C000095CE2 /* View2Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B632642B3AB5C000095CE2 /* View2Controller.swift */; };
+		C3B632672B3AC41300095CE2 /* DemoJsonDummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B632662B3AC41300095CE2 /* DemoJsonDummy.swift */; };
+		C3B632692B3AD64300095CE2 /* CountryWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B632682B3AD64300095CE2 /* CountryWeather.swift */; };
+		C3B6326B2B3AF9CD00095CE2 /* DayWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B6326A2B3AF9CD00095CE2 /* DayWeather.swift */; };
+		C3B6326E2B3BF88400095CE2 /* ConvertUilt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B6326D2B3BF88400095CE2 /* ConvertUilt.swift */; };
+		C3B632702B3C003600095CE2 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B6326F2B3C003600095CE2 /* Country.swift */; };
+		C3B7C65B2B3D16DD008B90CF /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7C65A2B3D16DD008B90CF /* WeatherViewModel.swift */; };
+		C3B7C65D2B3EA8D2008B90CF /* DelegateCountry.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7C65C2B3EA8D2008B90CF /* DelegateCountry.swift */; };
+		C3FDAF922B44F8EF00A95FA6 /* Configs.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FDAF912B44F8EF00A95FA6 /* Configs.swift */; };
 		D85B2D6E2451CA6C00300F57 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D85B2D6C2451CA6C00300F57 /* LaunchScreen.storyboard */; };
 		D8729C8F2431A2250045F4FF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE2C22B222A8EE6C003526A6 /* Assets.xcassets */; };
 		D88E8CB825812207009864A9 /* Plist in Resources */ = {isa = PBXBuildFile; fileRef = D88E8CB725812207009864A9 /* Plist */; };
@@ -73,6 +94,27 @@
 		BE2C22CA22A8EEC4003526A6 /* project-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "project-debug.xcconfig"; sourceTree = "<group>"; };
 		BE2C22CB22A8EEC4003526A6 /* app-iOS-debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "app-iOS-debug.xcconfig"; sourceTree = "<group>"; };
 		BE2C22DF22A8F134003526A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C33067F52B354D4C0005F6FD /* NewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewViewController.swift; sourceTree = "<group>"; };
+		C33067FC2B355B340005F6FD /* WeatherDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTableViewCell.swift; sourceTree = "<group>"; };
+		C33067FE2B358B6E0005F6FD /* cloudy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cloudy.png; path = ../../../../Downloads/cloudy.png; sourceTree = "<group>"; };
+		C33068002B35938A0005F6FD /* WeatherViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewCell.swift; sourceTree = "<group>"; };
+		C33917452B3C06E8002A32D1 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
+		C39207712B43D7A6009F7AD6 /* CountryLikeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryLikeTableViewCell.swift; sourceTree = "<group>"; };
+		C3B6324D2B39402100095CE2 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
+		C3B632512B395C6400095CE2 /* icon-refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-refresh.png"; path = "../../../../Downloads/icon-refresh.png"; sourceTree = "<group>"; };
+		C3B632532B39637500095CE2 /* CountriesLikeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesLikeViewController.swift; sourceTree = "<group>"; };
+		C3B6325C2B3A868B00095CE2 /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
+		C3B632602B3A880600095CE2 /* BaseRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseRequestService.swift; sourceTree = "<group>"; };
+		C3B632622B3AB13E00095CE2 /* Demo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Demo.swift; sourceTree = "<group>"; };
+		C3B632642B3AB5C000095CE2 /* View2Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View2Controller.swift; sourceTree = "<group>"; };
+		C3B632662B3AC41300095CE2 /* DemoJsonDummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoJsonDummy.swift; sourceTree = "<group>"; };
+		C3B632682B3AD64300095CE2 /* CountryWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryWeather.swift; sourceTree = "<group>"; };
+		C3B6326A2B3AF9CD00095CE2 /* DayWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayWeather.swift; sourceTree = "<group>"; };
+		C3B6326D2B3BF88400095CE2 /* ConvertUilt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertUilt.swift; sourceTree = "<group>"; };
+		C3B6326F2B3C003600095CE2 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		C3B7C65A2B3D16DD008B90CF /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
+		C3B7C65C2B3EA8D2008B90CF /* DelegateCountry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegateCountry.swift; sourceTree = "<group>"; };
+		C3FDAF912B44F8EF00A95FA6 /* Configs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configs.swift; sourceTree = "<group>"; };
 		CAA6B170F25CDAD6DF522015 /* Pods-AIEnglishApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AIEnglishApp.debug.xcconfig"; path = "Target Support Files/Pods-AIEnglishApp/Pods-AIEnglishApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D8158C5126106F17005CD0EB /* RxCocoa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxCocoa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8158C5226106F17005CD0EB /* RxRelay.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RxRelay.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +190,10 @@
 		BE2C22A322A8EE6C003526A6 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				C3B6326C2B3BD5E900095CE2 /* Uilt */,
+				C3B632592B3A850A00095CE2 /* Networking */,
+				C3B632562B39662600095CE2 /* ViewModel */,
+				C3B632552B3965F000095CE2 /* Model */,
 				D867F1622434931B009C5051 /* Configs */,
 				8486F93C2429F07E00E2C980 /* Storyboards */,
 				D843E39D249139F800152B47 /* Views */,
@@ -160,6 +206,8 @@
 			children = (
 				249DF8BD2AFB8E39008E6F48 /* GoogleService-Info.plist */,
 				BE2C22B222A8EE6C003526A6 /* Assets.xcassets */,
+				C3B632512B395C6400095CE2 /* icon-refresh.png */,
+				C33067FE2B358B6E0005F6FD /* cloudy.png */,
 				D8158CFB2610CA60005CD0EB /* Configuration.storekit */,
 				D87C09242536119800F8A92D /* Fonts */,
 				5A3F6EB928DF66BB0066A8A5 /* BaseProjectApp.entitlements */,
@@ -224,6 +272,44 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C3B632552B3965F000095CE2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C3B632622B3AB13E00095CE2 /* Demo.swift */,
+				C3B632682B3AD64300095CE2 /* CountryWeather.swift */,
+				C3B6326A2B3AF9CD00095CE2 /* DayWeather.swift */,
+				C3B6326F2B3C003600095CE2 /* Country.swift */,
+				C3B7C65C2B3EA8D2008B90CF /* DelegateCountry.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		C3B632562B39662600095CE2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C3B7C65A2B3D16DD008B90CF /* WeatherViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		C3B632592B3A850A00095CE2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				C3B6325C2B3A868B00095CE2 /* NetworkConstants.swift */,
+				C3B632602B3A880600095CE2 /* BaseRequestService.swift */,
+				C3B632662B3AC41300095CE2 /* DemoJsonDummy.swift */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		C3B6326C2B3BD5E900095CE2 /* Uilt */ = {
+			isa = PBXGroup;
+			children = (
+				C3B6326D2B3BF88400095CE2 /* ConvertUilt.swift */,
+			);
+			name = Uilt;
+			sourceTree = "<group>";
+		};
 		D7C7DE150C8D1C51F6EEEA7F /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +331,14 @@
 			isa = PBXGroup;
 			children = (
 				247DA2332B348C2800487563 /* MainViewController.swift */,
+				C33067F52B354D4C0005F6FD /* NewViewController.swift */,
+				C33067FC2B355B340005F6FD /* WeatherDataTableViewCell.swift */,
+				C33068002B35938A0005F6FD /* WeatherViewCell.swift */,
+				C3B6324D2B39402100095CE2 /* CountriesViewController.swift */,
+				C3B632532B39637500095CE2 /* CountriesLikeViewController.swift */,
+				C3B632642B3AB5C000095CE2 /* View2Controller.swift */,
+				C33917452B3C06E8002A32D1 /* CountryTableViewCell.swift */,
+				C39207712B43D7A6009F7AD6 /* CountryLikeTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -253,6 +347,7 @@
 			isa = PBXGroup;
 			children = (
 				BE2C22DF22A8F134003526A6 /* AppDelegate.swift */,
+				C3FDAF912B44F8EF00A95FA6 /* Configs.swift */,
 			);
 			path = Configs;
 			sourceTree = "<group>";
@@ -313,7 +408,7 @@
 				TargetAttributes = {
 					BE2C227022A8E93D003526A6 = {
 						CreatedOnToolsVersion = 10.2;
-						LastSwiftMigration = 1020;
+						LastSwiftMigration = 1510;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -352,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D88E8CB825812207009864A9 /* Plist in Resources */,
+				C33067FF2B358B6E0005F6FD /* cloudy.png in Resources */,
 				24031DE82B04718200E2FE53 /* SF-Pro-Text-Heavy.ttf in Resources */,
 				249DF8C62AFB8E45008E6F48 /* SF-Pro-Text-Bold.ttf in Resources */,
 				D85B2D6E2451CA6C00300F57 /* LaunchScreen.storyboard in Resources */,
@@ -362,6 +458,7 @@
 				2439149B296405A00038474C /* Launch Screen.storyboard in Resources */,
 				D8A3B18B2622C39400BAAC41 /* Main.storyboard in Resources */,
 				249DF8BE2AFB8E39008E6F48 /* GoogleService-Info.plist in Resources */,
+				C3B632522B395C6400095CE2 /* icon-refresh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,9 +549,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3B6325D2B3A868B00095CE2 /* NetworkConstants.swift in Sources */,
+				C3B6326B2B3AF9CD00095CE2 /* DayWeather.swift in Sources */,
+				C33917462B3C06E8002A32D1 /* CountryTableViewCell.swift in Sources */,
+				C3B632652B3AB5C000095CE2 /* View2Controller.swift in Sources */,
 				BE2C22E222A8F134003526A6 /* AppDelegate.swift in Sources */,
+				C3B632612B3A880600095CE2 /* BaseRequestService.swift in Sources */,
 				247DA2342B348C2800487563 /* MainViewController.swift in Sources */,
+				C3B632632B3AB13E00095CE2 /* Demo.swift in Sources */,
+				C3B632542B39637500095CE2 /* CountriesLikeViewController.swift in Sources */,
+				C3B6326E2B3BF88400095CE2 /* ConvertUilt.swift in Sources */,
+				C3B7C65B2B3D16DD008B90CF /* WeatherViewModel.swift in Sources */,
+				C3B632702B3C003600095CE2 /* Country.swift in Sources */,
 				24ECFB8B290294DA008F7DA5 /* R.generated.swift in Sources */,
+				C3B632672B3AC41300095CE2 /* DemoJsonDummy.swift in Sources */,
+				C33068012B35938A0005F6FD /* WeatherViewCell.swift in Sources */,
+				C33067F62B354D4C0005F6FD /* NewViewController.swift in Sources */,
+				C3B7C65D2B3EA8D2008B90CF /* DelegateCountry.swift in Sources */,
+				C3B6324E2B39402100095CE2 /* CountriesViewController.swift in Sources */,
+				C3B632692B3AD64300095CE2 /* CountryWeather.swift in Sources */,
+				C33067FD2B355B340005F6FD /* WeatherDataTableViewCell.swift in Sources */,
+				C39207722B43D7A6009F7AD6 /* CountryLikeTableViewCell.swift in Sources */,
+				C3FDAF922B44F8EF00A95FA6 /* Configs.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,8 +619,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE2C22CB22A8EEC4003526A6 /* app-iOS-debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\" \"AppIcon 2\" \"AppIcon 3\" \"AppIcon 5\" \"AppIcon 7\" \"AppIcon 6\" \"AppIcon 4\" \"AppIcon 8\"";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 5";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\"";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/Resources/$(TARGET_NAME).entitlements";
@@ -530,6 +646,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tinyleo.com.grammarai;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = BaseProjectApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -550,8 +667,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BE2C22C722A8EEC4003526A6 /* app-iOS-release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\" \"AppIcon 2\" \"AppIcon 3\" \"AppIcon 5\" \"AppIcon 7\" \"AppIcon 6\" \"AppIcon 4\" \"AppIcon 8\"";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 5";
+				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "\"AppIcon 1\"";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon 1";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "$(PROJECT_DIR)/Resources/$(TARGET_NAME).entitlements";
@@ -578,6 +695,7 @@
 				);
 				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = tinyleo.com.grammarai;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME)";
 				PRODUCT_NAME = BaseProjectApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -585,6 +703,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_OPTIMIZE_OBJECT_LIFETIME = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
