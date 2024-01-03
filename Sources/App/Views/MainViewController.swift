@@ -32,8 +32,7 @@ class MainViewController: UIViewController, DelegateCountry{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
-  
+
     }
     
     func loadData(){
@@ -48,8 +47,6 @@ class MainViewController: UIViewController, DelegateCountry{
         self.itemTextLabel.text = isC ? self.daysWeather[0].getWeatherCurrent()?.getTemperatureC():
         self.daysWeather[0].getWeatherCurrent()?.getTemperatureF()
       
-        
-        
     }
     
     
@@ -112,11 +109,9 @@ class MainViewController: UIViewController, DelegateCountry{
         changeContryButton.layer.cornerRadius = 10
         changeContryButton.addTarget(self, action:#selector(handleClickChangeContryButton), for: .touchUpInside)
         
-        
         setWeatherCollectionView()
         setWeatherDateTableView()
         
-      
     }
     
     func setUpConstraints() {

@@ -153,7 +153,6 @@ extension ContriesViewController: UITableViewDelegate, UITableViewDataSource{
             return .init()
         }
         
-        
         let country = countries[indexPath.row]
         cell.isLikeButton.addTarget(self, action: #selector(handleClickLike(_ :)), for: .touchUpInside)
         cell.isLikeButton.tag = indexPath.row
@@ -183,36 +182,10 @@ extension ContriesViewController: UITableViewDelegate, UITableViewDataSource{
     @objc func handleClickLike(_ sender: UIButton){
         let row = sender.tag
         var country: Country = countries[row]
-        
-        if UserDefaults.standard.object(forKey: Configs.countriesUD) != nil {
-            let jsonDecoder = JSONDecoder()
-            if let storedData = UserDefaults.standard.data(forKey: Configs.countriesUD),
-               var decodedCountry = try? jsonDecoder.decode([Country].self, from: storedData) {
-                let  isContryArray = decodedCountry.contains(where: {$0.id.png == country.id.png})
-                if isContryArray {
-                    decodedCountry.removeAll(where: {$0.id.png == country.id.png})
-                    encoderContries(encoderContries: decodedCountry)
-                     sender.setImage(UIImage(named: "icon-heart"), for: .normal)
-                    
-                }else{
-                    decodedCountry.append(country)
-                    encoderContries(encoderContries: decodedCountry)
-                    sender.setImage(UIImage(named: "icon-heart-red"), for: .normal)
-                }
-            }
-        } else {
-            
-            encoderContries(encoderContries: [country])
-            sender.setImage(UIImage(named: "icon-heart-red"), for: .normal)
-        }
+        CountriesViewModel.share.handleClickCountryLike(sender, country: country)
             
     }
-    func encoderContries(encoderContries: [Country]){
-        let jsonEncoder = JSONEncoder()
-        if let encodedData = try? jsonEncoder.encode(encoderContries) {
-            UserDefaults.standard.set(encodedData, forKey:Configs.countriesUD)
-        }
-    }
+    
     
  
 }
