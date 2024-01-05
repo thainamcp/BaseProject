@@ -15,15 +15,10 @@ class WeatherDataTableViewCell: UITableViewCell{
     private lazy var temMinLabel = UILabel()
     private lazy var temMaxLabel = UILabel()
     
-    
-
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setUpViews()
         setUpConstraints()
-      
     }
     
     required init?(coder: NSCoder) {
@@ -38,6 +33,7 @@ class WeatherDataTableViewCell: UITableViewCell{
         temMaxLabel.text = isC ?dayWeather.getTemperatureCMaxOnDay(): dayWeather.getTemperatureFMaxOnDay()
        
     }
+    
     func setUpViews(){
         self.backgroundColor = .black.withAlphaComponent(0.2)
         
@@ -46,18 +42,14 @@ class WeatherDataTableViewCell: UITableViewCell{
         
         iconWeatherImage.contentMode = .scaleAspectFit
     
-        
         temMinLabel.textColor = .black
         temMinLabel.font = UIFont.systemFont(ofSize: 16)
         
-       
         temMaxLabel.textColor = .black
         temMaxLabel.font = UIFont.systemFont(ofSize: 16)
         
-      
-        
-        
     }
+    
     func setUpConstraints() {
         contentView.addSubview(titleDayLabel)
         contentView.addSubview(temMaxLabel)
@@ -88,6 +80,7 @@ class WeatherDataTableViewCell: UITableViewCell{
         }
        
     }
+    
     func fomatDayWeek(dt: Int) -> String {
         let timestamp = TimeInterval(dt)
         let date = Date(timeIntervalSince1970: timestamp)

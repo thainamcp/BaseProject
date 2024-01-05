@@ -7,13 +7,11 @@
 //
 
 import Dispatch
+import Foundation
+
 class WeatherViewModel {
     static public var shared: WeatherViewModel = WeatherViewModel()
     
-        
     
-          
-           
-        
             
 }

@@ -2,7 +2,6 @@ import UIKit
 import SnapKit
 import CoreLocation
 
-
 class MainViewController: UIViewController, DelegateCountry{
       var locationManager = CLLocationManager()
       private lazy var titleLabel = UILabel()
@@ -21,14 +20,6 @@ class MainViewController: UIViewController, DelegateCountry{
       private var isC = true
       private var weatherData: WeatherData?
       private lazy var weatherDayTableView = UITableView()
-    
-    // Review code:
-    // - Xoá khoảng trắng dư thừa
-    // - Giữa các func cách 1 khoảng trắng
-    // - Chú ý đặt tên ViewController với Model: vd: CarModel, PeopleModel, MainViewController
-    // - Vài chỗ UD sử dụng nhiều trong 1 class hoặc func, nên khai báo 1 biến để sử dụng lại, không khởi tạo 2 lần trong func
-    // - Remove những class/stuct không sài.
-    // - Viewmodel chưa thấy handle, tạo từng viewmodel từng ứng với viewcontroller, đẩy logo handle qua viewmodel, viewcontroller chỉ handle ui.
       
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +31,6 @@ class MainViewController: UIViewController, DelegateCountry{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
-  
     }
     
     func loadData(){
@@ -53,13 +42,9 @@ class MainViewController: UIViewController, DelegateCountry{
 
         changeCLabel.textColor = isC ? .red : .white
         changeFLabel.textColor = isC ? .white : .red
-        self.itemTextLabel.text = isC ? self.daysWeather[0].getWeatherCurrent()?.getTemperatureC():
-        self.daysWeather[0].getWeatherCurrent()?.getTemperatureF()
-      
-        
-        
+        self.itemTextLabel.text = isC ? weatherData?.getTemperatureC():
+        weatherData?.getTemperatureF()
     }
-    
     
     func setGrandientLayer(yourWidth: Int ,yourHeight : Int)-> CAGradientLayer {
         // Tạo một gradient layer
@@ -76,7 +61,6 @@ class MainViewController: UIViewController, DelegateCountry{
     }
     
     func setUpViews() {
-  
         view.layer.addSublayer(setGrandientLayer(yourWidth: Int(view.frame.width),yourHeight: Int(view.frame.height)))
         
         iconLikeImage.image = UIImage(named: "icon-heart")
@@ -120,12 +104,9 @@ class MainViewController: UIViewController, DelegateCountry{
         changeContryButton.layer.cornerRadius = 10
         changeContryButton.addTarget(self, action:#selector(handleClickChangeContryButton), for: .touchUpInside)
         
-        
         setWeatherCollectionView()
         setWeatherDateTableView()
         
-        
-        // Review code: Xoa khoang trang du thua
     }
     
     func setUpConstraints() {
@@ -140,7 +121,6 @@ class MainViewController: UIViewController, DelegateCountry{
         view.addSubview(iconRefreshButton)
         view.addSubview(changeCLabel)
         view.addSubview(changeFLabel)
-        
         view.addSubview(activityIndicator)
         
         activityIndicator.snp.makeConstraints{
@@ -153,20 +133,20 @@ class MainViewController: UIViewController, DelegateCountry{
             $0.right.equalToSuperview().offset(-20)
             $0.topMargin.equalToSuperview().offset(10)
             $0.size.equalTo(CGSize(width: 25, height: 25))
-            
         }
+        
          iconLikeImage.snp.makeConstraints{
             $0.topMargin.equalToSuperview().offset(10)
             $0.size.equalTo(CGSize(width: 25, height: 25))
             $0.trailing.equalTo(iconRefreshButton.snp.leading).offset(-15)
-    
          }
+        
          changeFLabel.snp.makeConstraints{
            $0.topMargin.equalToSuperview().offset(10)
            $0.size.equalTo(CGSize(width: 30, height: 25))
            $0.trailing.equalTo(iconLikeImage.snp.leading).offset(-15)
-   
         }
+        
         changeCLabel.snp.makeConstraints{
           $0.topMargin.equalToSuperview().offset(10)
           $0.size.equalTo(CGSize(width: 30, height: 25))
@@ -177,14 +157,12 @@ class MainViewController: UIViewController, DelegateCountry{
             $0.topMargin.equalToSuperview().offset(50)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(CGSize(width: 200, height: 40))
-            
         }
         
         itemMainView.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.size.equalTo(CGSize(width: 200, height: 140))
-            
         }
         
         itemImage.snp.makeConstraints{
@@ -196,7 +174,6 @@ class MainViewController: UIViewController, DelegateCountry{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(itemImage.snp.bottom).offset(10)
             $0.size.equalTo(CGSize(width: 100, height: 30))
-            
         }
         
         weathersColletionView.snp.makeConstraints{
@@ -217,9 +194,8 @@ class MainViewController: UIViewController, DelegateCountry{
             $0.size.equalTo(CGSize(width: view.frame.width - 40,height: 60))
         }
      
-    }// Review code: cách dòng với các func khác nhau
+    }
     func getWeatherbyContry(lat: Double, lon: Double) {
-        
         latlng[0] = lat
         latlng[1] = lon
         
@@ -229,11 +205,9 @@ class MainViewController: UIViewController, DelegateCountry{
     @objc func handleClickRefresh(){
         if latlng[0] != 0 && latlng[1] != 0 {
             self.getDataToApiWeather(lat: latlng[0], lon: latlng[1], activityIndicator: activityIndicator)
-            
         }else{
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
-            
         }
     }
     
@@ -242,36 +216,35 @@ class MainViewController: UIViewController, DelegateCountry{
         view.delegateCountry = self
         navigationController?.pushViewController(view, animated: true)
     }
+    
     @objc func handleClickNextViewLike(){
         let view = ContriesLikeViewController()
         view.delegateCountry = self
         navigationController?.pushViewController(view, animated: true)
     }
+    
     @objc func handleClickChangeC(){
         self.isC = true
         self.loadData()
     }
+    
     @objc func handleClickChangeF(){
         self.isC = false
         self.loadData()
     }
+    
     func showErrorMessageAlert(message: String) {
            let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
            alert.addAction(okAction)
            present(alert, animated: true, completion: nil)
-       }
-
- 
+    }
 
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       
         if let firstDayWeather = daysWeather.first {
             return firstDayWeather.weatherData.count
         } else {
@@ -280,7 +253,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func setWeatherCollectionView(){
-        
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
@@ -308,14 +280,12 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController:UITableViewDelegate,UITableViewDataSource{
-    
     func setWeatherDateTableView(){
         weatherDayTableView.dataSource = self
         weatherDayTableView.delegate = self
         weatherDayTableView.register(WeatherDataTableViewCell.self, forCellReuseIdentifier: WeatherDataTableViewCell.identifier)
         weatherDayTableView.layer.cornerRadius = 10
         weatherDayTableView.backgroundColor = .black.withAlphaComponent(0.2)
-
     }
     
 
@@ -332,6 +302,7 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource{
         
         return cell
     }
+    
     func getDataToApiWeather(lat: Double,lon: Double, activityIndicator: UIActivityIndicatorView){
         BaseRequestService.share.requestApiWeather(lat: lat, lon: lon,activityIndicator: activityIndicator){
             (isSuccess,data,code)  in
@@ -343,17 +314,13 @@ extension MainViewController:UITableViewDelegate,UITableViewDataSource{
                     self.loadData()
                 }else{
                     self.showErrorMessageAlert(message: code ?? "")
-                    
                 }
-                
-                
             }
         }
     }
     
-    
-    
 }
+
 extension MainViewController: CLLocationManagerDelegate {
     
     func requestLocationAuthorization() {
@@ -366,8 +333,6 @@ extension MainViewController: CLLocationManagerDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.distanceFilter = 10.0 // Đơn vị là mét
 //        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-     
-
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -393,7 +358,6 @@ extension MainViewController: CLLocationManagerDelegate {
         latlng[0] = location.coordinate.latitude
         latlng[1] = location.coordinate.longitude
      
-        
         self.getDataToApiWeather(lat: latlng[0], lon: latlng[1], activityIndicator: activityIndicator)
     }
     
@@ -418,11 +382,9 @@ extension MainViewController: CLLocationManagerDelegate {
 
             present(alertController, animated: true, completion: nil)
         }
+    
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-       
         print("Location error: \(error.localizedDescription)")
     }
-
-
 
 }

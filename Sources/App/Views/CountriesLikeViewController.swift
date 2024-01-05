@@ -15,7 +15,6 @@ class ContriesLikeViewController: UIViewController {
     private lazy var searchTF = UITextField()
     private lazy var countriesTable = UITableView()
     private lazy var countries: [Country] = []
-    private var dataCountries:[Country] = []
     var delegateCountry: DelegateCountry?
     
     override func viewDidLoad() {
@@ -23,17 +22,13 @@ class ContriesLikeViewController: UIViewController {
         
         setUpViews()
         setUpConstraints()
-        
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let jsonDecoder = JSONDecoder()
-        if let storedData = UserDefaults.standard.data(forKey: Configs.countriesUD),
-           let decodedCountry = try? jsonDecoder.decode([Country].self, from: storedData) {
-            countries =  decodedCountry
-            dataCountries = decodedCountry
-            countriesTable.reloadData()
-        }
+        countries =  CountriesLikeViewModel.share.decoderContries()
+        countriesTable.reloadData()
+       
     }
     
     func setUpViews(){
@@ -64,8 +59,7 @@ class ContriesLikeViewController: UIViewController {
         titleLabel.font = UIFont.systemFont(ofSize: 32)
         
         setContriesTableView()
-        
-        
+
     }
     
     func setUpConstraints() {
@@ -73,8 +67,6 @@ class ContriesLikeViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(countriesTable)
         view.addSubview(searchTF)
-      
-    
         
         backViewButton.snp.makeConstraints{
             $0.topMargin.equalToSuperview().offset(20)
@@ -86,14 +78,14 @@ class ContriesLikeViewController: UIViewController {
             $0.topMargin.equalToSuperview().offset(160)
             $0.leftMargin.equalToSuperview().offset(20)
             $0.size.equalTo(CGSize(width: 200, height: 40))
-            
         }
+        
         searchTF.snp.makeConstraints{
             $0.topMargin.equalToSuperview().offset(80)
             $0.centerX.equalToSuperview()
             $0.size.equalTo(CGSize(width: view.frame.width - 40, height: 40))
-            
         }
+        
         countriesTable.snp.makeConstraints{
             $0.centerX.equalToSuperview()
             $0.top.equalTo(titleLabel.snp.bottom).offset(20)
@@ -101,31 +93,29 @@ class ContriesLikeViewController: UIViewController {
         }
         
     }
+    
     @objc func onChangeSearch(_ textField: UITextField){
         if let searchText = textField.text{
             if(searchText.isEmpty){
-                self.countries = self.dataCountries
+                self.countries = CountriesLikeViewModel.share.decoderContries()
                 self.countriesTable.reloadData()
             }else{
-                let dataContriesSearch = self.dataCountries.filter{$0.name.common.contains(searchText)}
+                let dataContriesSearch = CountriesLikeViewModel.share.decoderContries().filter{$0.name.common.contains(searchText)}
                 self.countries = dataContriesSearch
                 self.countriesTable.reloadData()
-            }        }
+            }       
+        }
         
     }
+    
     @objc func handleClickBackViewButton(){
-        
         navigationController?.popViewController(animated: true)
         
     }
 
-
-
-
 }
+
 extension ContriesLikeViewController: UITableViewDelegate, UITableViewDataSource {
-    
-    
  
     func setContriesTableView(){
         countriesTable.dataSource = self
@@ -136,8 +126,8 @@ extension ContriesLikeViewController: UITableViewDelegate, UITableViewDataSource
         countriesTable.layer.borderColor = UIColor.black.withAlphaComponent(0.5).cgColor
         countriesTable.layer.cornerRadius = 10
         countriesTable.layer.cornerRadius = 10
-   
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
@@ -152,23 +142,22 @@ extension ContriesLikeViewController: UITableViewDelegate, UITableViewDataSource
         cell.deleteButton.tag = indexPath.row
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = countries[indexPath.row]
         
         delegateCountry?.getWeatherbyContry(lat: country.latlng[0], lon: country.latlng[1])
         navigationController?.popViewController(animated: true)
     }
+    
     @objc func handleDeleteContryLike(_ sender: UIButton){
         let row = sender.tag
-        countries.remove(at: row)
-        dataCountries.remove(at: row)
-        let jsonEncoder = JSONEncoder()
-        if let encodedData = try? jsonEncoder.encode(countries) {
-            UserDefaults.standard.set(encodedData, forKey:Configs.countriesUD)
-        }
+        let country = countries[row]
+        countries.removeAll(where: {$0.id.png == country.id.png})
+        var data = CountriesLikeViewModel.share.decoderContries()
+        data.removeAll(where: {$0.id.png == country.id.png})
+        CountriesLikeViewModel.share.encoderContries(encoderContries: data)
         countriesTable.reloadData()
-        
     }
-    
    
 }

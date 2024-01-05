@@ -23,8 +23,8 @@ class ContriesViewController: UIViewController {
         
         setUpViews()
         setUpConstraints()
-        
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         BaseRequestService.share.requestApiContry(activityIndicator: activityIndicator){
@@ -54,7 +54,6 @@ class ContriesViewController: UIViewController {
         activityIndicator.color = .red
         activityIndicator.style = .large
         
-        
         searchTF.placeholder = "search country"
         searchTF.borderStyle = .roundedRect
         searchTF.layer.cornerRadius = 20
@@ -68,16 +67,14 @@ class ContriesViewController: UIViewController {
         searchTF.rightViewMode = .always
         searchTF.addTarget(self, action: #selector(onChangeSearch(_: )), for: .editingChanged)
     
-        
         titleLabel.text = "Countries"
         titleLabel.textColor = .black
         titleLabel.font = UIFont.systemFont(ofSize: 32)
         
         setContriesTableView()
         
-        
-        
     }
+    
     @objc func onChangeSearch(_ textField: UITextField){
         if let searchText = textField.text{
             if(searchText.isEmpty){
@@ -89,7 +86,6 @@ class ContriesViewController: UIViewController {
                 self.countriesTable.reloadData()
             }
         }
-        
     }
     
     func setUpConstraints() {
@@ -130,20 +126,22 @@ class ContriesViewController: UIViewController {
         }
         
     }
+    
     @objc func handleClickBackViewButton(){
-        
         navigationController?.popViewController(animated: true)
-        
     }
+    
     func showErrorMessageAlert(message: String) {
            let alert = UIAlertController(title: "Notice", message: message, preferredStyle: .alert)
            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
            alert.addAction(okAction)
            present(alert, animated: true, completion: nil)
-       }
+    }
 
 }
+
 extension ContriesViewController: UITableViewDelegate, UITableViewDataSource{
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count
     }
@@ -153,19 +151,17 @@ extension ContriesViewController: UITableViewDelegate, UITableViewDataSource{
             return .init()
         }
         
-        
         let country = countries[indexPath.row]
         cell.isLikeButton.addTarget(self, action: #selector(handleClickLike(_ :)), for: .touchUpInside)
         cell.isLikeButton.tag = indexPath.row
         cell.setData(country: country)
         return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let country = countries[indexPath.row]
-        
         delegateCountry?.getWeatherbyContry(lat: country.latlng[0], lon: country.latlng[1])
         navigationController?.popViewController(animated: true)
-    
     }
     
     func setContriesTableView(){
@@ -179,42 +175,11 @@ extension ContriesViewController: UITableViewDelegate, UITableViewDataSource{
         countriesTable.register(ContryTableViewCell.self, forCellReuseIdentifier: ContryTableViewCell.identifier)
     }
  
-    
     @objc func handleClickLike(_ sender: UIButton){
         let row = sender.tag
         var country: Country = countries[row]
-        
-        // Review code: ở đây UD sử dụng nhiều, nên khai báo 1 biến để sử dụng lại, không khởi tạo 2 lần trong func
-        
-        if UserDefaults.standard.object(forKey: Configs.countriesUD) != nil {
-            let jsonDecoder = JSONDecoder()
-            if let storedData = UserDefaults.standard.data(forKey: Configs.countriesUD),
-               var decodedCountry = try? jsonDecoder.decode([Country].self, from: storedData) {
-                let  isContryArray = decodedCountry.contains(where: {$0.id.png == country.id.png})
-                if isContryArray {
-                    decodedCountry.removeAll(where: {$0.id.png == country.id.png})
-                    encoderContries(encoderContries: decodedCountry)
-                     sender.setImage(UIImage(named: "icon-heart"), for: .normal)
-                    
-                }else{
-                    decodedCountry.append(country)
-                    encoderContries(encoderContries: decodedCountry)
-                    sender.setImage(UIImage(named: "icon-heart-red"), for: .normal)
-                }
-            }
-        } else {
+        CountriesViewModel.share.handleClickCountryLike(sender, country: country)
             
-            encoderContries(encoderContries: [country])
-            sender.setImage(UIImage(named: "icon-heart-red"), for: .normal)
-        }
-            
-    }
-    func encoderContries(encoderContries: [Country]){
-        let jsonEncoder = JSONEncoder()
-        if let encodedData = try? jsonEncoder.encode(encoderContries) {
-            UserDefaults.standard.set(encodedData, forKey:Configs.countriesUD)
-        }
     }
     
- 
 }

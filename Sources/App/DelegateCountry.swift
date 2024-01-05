@@ -8,5 +8,7 @@
 
 import Foundation
 protocol DelegateCountry {
+    
     func getWeatherbyContry(lat: Double ,lon: Double)
+    
 }
