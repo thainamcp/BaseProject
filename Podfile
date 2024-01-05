@@ -10,7 +10,6 @@ def common_pods
   pod 'Firebase'
   pod 'Firebase/RemoteConfig'
 
-  pod 'CoreLocation'
   pod 'Alamofire'
   pod 'Alamofire'
   # update pod

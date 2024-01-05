@@ -14,15 +14,11 @@ class CountryLikeTableViewCell: UITableViewCell {
     public lazy var nameContryLabel = UILabel()
     public lazy var deleteButton = UIButton()
     
-    
-    
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         setUpViews()
         setUpConstraints()
-      
     }
     
     required init?(coder: NSCoder) {
@@ -45,11 +41,9 @@ class CountryLikeTableViewCell: UITableViewCell {
                }
         nameContryLabel.text = country.name.common
         
-       
     }
     
     func setUpViews(){
-       
         contryImage.contentMode = .scaleAspectFit
         contryImage.layer.cornerRadius = 10
         
@@ -57,8 +51,6 @@ class CountryLikeTableViewCell: UITableViewCell {
         nameContryLabel.font = UIFont.systemFont(ofSize: 16)
         
         deleteButton.setImage(UIImage(named: "icon-circle-close"), for: .normal)
-        
-       
         
     }
     
@@ -79,12 +71,12 @@ class CountryLikeTableViewCell: UITableViewCell {
             $0.leading.equalTo(contryImage.snp.trailing).offset(20)
             $0.size.equalTo(CGSize(width: 200, height: 40))
         }
+        
         deleteButton.snp.makeConstraints{
             $0.centerY.equalToSuperview()
             $0.rightMargin.equalToSuperview()
             $0.size.equalTo(CGSize(width: 25, height: 25))
         }
-        
         
     }
 }

@@ -14,13 +14,13 @@ struct Main:Codable {
         self.temp = try container.decode(Double.self, forKey: .temp)
     }
    
-
 }
 
 struct Weather:Codable{
     var main: String
     var description: String
     var icon: String
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.main = try container.decode(String.self, forKey: .main)
@@ -28,12 +28,12 @@ struct Weather:Codable{
         self.icon = try container.decode(String.self, forKey: .icon)
     }
     
- 
-
 }
+
 struct City:Codable{
     var country: String
     var timezone: Int
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.country = try container.decode(String.self, forKey: .country)
@@ -55,6 +55,7 @@ struct WeatherData:Codable{
         self.weather = try container.decode([Weather].self, forKey: .weather)
         self.dt_txt = try container.decode(String.self, forKey: .dt_txt)
     }
+    
     func getDate() -> String {
         let timestamp = TimeInterval(self.dt)
         let date = Date(timeIntervalSince1970: timestamp)
@@ -81,13 +82,11 @@ struct WeatherData:Codable{
     }
 
     func getTemperatureF() -> String {
-       
         return ConvertUilt.shared.ConvertTemperatureF(temp: self.main.temp)
         
     }
+    
     func getTemperatureC() -> String {
-     
-       
         return ConvertUilt.shared.ConvertTemperatureC(temp: self.main.temp)
         
     }
@@ -99,6 +98,7 @@ struct ContryWeather:Codable{
     var message: Int
     var list : [WeatherData]
     var city: City
+    
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.cod = try container.decode(String.self, forKey: .cod)
@@ -107,8 +107,4 @@ struct ContryWeather:Codable{
         self.city = try container.decode(City.self, forKey: .city)
     }
   
-    
-
- 
-    
 }

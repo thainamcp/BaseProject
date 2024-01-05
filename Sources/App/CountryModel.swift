@@ -10,14 +10,12 @@ import Foundation
 
 struct Name: Codable {
     var common: String
-    
     // MARK: - NSCoding
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.common = try container.decode(String.self, forKey: .common)
     }
-    
 
 }
 
